@@ -25,15 +25,14 @@ public class PlayerController : MonoBehaviour
     * Checks if player is grounded by raycasting down to check if a collider exists below the player.
     */
     private bool isGrounded(){
-        return Physics2D.Raycast(transform.position, -transform.up, 1.1f);
+        return Physics2D.Raycast(transform.position, -transform.up, 5.0f);
     }
     // Update is called once per frame
     void Update()
     {   
         // Recieve horizontal input from the player
         float horizontalInput = Input.GetAxis("Horizontal");
-        horizontalInput = Mathf.Clamp(horizontalInput, -1.0f, 1.0f);
-        horizontalInput = horizontalInput > 0 ? 1 : horizontalInput < 0 ? -1 : 0;
+        if(horizontalInput != 0) horizontalInput = horizontalInput > 0f?1f:-1f;
         
         //Process jump using unity physics
         if(Input.GetKeyDown(KeyCode.Space)) {
@@ -43,12 +42,12 @@ public class PlayerController : MonoBehaviour
 
         // Calculate velocity using acceleration variables
         if(horizontalInput != 0){
-            localVelocity = localVelocity + playerAccel * horizontalInput * Time.deltaTime; 
+            localVelocity += playerAccel * horizontalInput * Time.deltaTime; 
             if(Math.Abs(localVelocity) > maxSpeed) localVelocity = maxSpeed * Math.Sign(localVelocity);
         }
         else { 
             localVelocity = (Math.Abs(localVelocity) - playerAccel * frictionMult * Time.deltaTime) * Math.Sign(localVelocity); 
-            if(Math.Abs(localVelocity) < 0.05f) localVelocity = 0;
+            if(Math.Abs(localVelocity) < 0.1f) localVelocity = 0;
         }
         
         transform.position = new Vector3(transform.position.x + localVelocity * Time.deltaTime, transform.position.y, transform.position.z);

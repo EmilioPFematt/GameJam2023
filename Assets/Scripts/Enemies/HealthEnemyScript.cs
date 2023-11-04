@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class HealthEnemyScript : MonoBehaviour
 {
-     private const float acceleration = 60.0f;
+     private const float acceleration = 40.0f;
     private float maxSpeed = 10.0f;
     private const float attackSpeed = 18.0f;
     private const float normalSpeed = 10.0f;
     private float localSpeed = 0.0f; 
-    public GameObject player;
+    private GameObject player;
     private float angle = 0.5f;
+    private bool active = false;
 
     IEnumerator IdleBehavior(){
         while(true){
@@ -22,10 +23,20 @@ public class HealthEnemyScript : MonoBehaviour
         }
     }
 
+    public void SetWakeUp(bool s){
+        if(active) return;
+        else {
+            if(s){
+                active = true;
+                StartCoroutine(IdleBehavior());
+            }
+        }
+    }
+
     // Start is called before the first frame update
     void Start()
     {
-        StartCoroutine(IdleBehavior());
+        player = GameObject.FindWithTag("Player");
     }
     // Angle esta en PI radians
     public Vector3 FindPosition(float a, float distance){
@@ -43,15 +54,17 @@ public class HealthEnemyScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector3 target = FindPosition(angle, 7.0f);
-        if(Vector3.Distance(transform.position, target) <= 0.1f || localSpeed >= maxSpeed){
-            localSpeed -= acceleration * Time.deltaTime;
-            if(localSpeed < 0) localSpeed = 0; 
+        if(active){
+            Vector3 target = FindPosition(angle, 6.0f);
+            if(Vector3.Distance(transform.position, target) <= 0.1f || localSpeed >= maxSpeed){
+                localSpeed -= acceleration * Time.deltaTime;
+                if(localSpeed < 0) localSpeed = 0; 
+            }
+            else {
+                localSpeed += acceleration * Time.deltaTime; 
+                if(localSpeed > maxSpeed) localSpeed = maxSpeed;
+            }
+            transform.position = Vector3.MoveTowards(transform.position, target, localSpeed * Time.deltaTime);
         }
-        else {
-            localSpeed += acceleration * Time.deltaTime; 
-            if(localSpeed > maxSpeed) localSpeed = maxSpeed;
-        }
-        transform.position = Vector3.MoveTowards(transform.position, target, localSpeed * Time.deltaTime);
     }
 }

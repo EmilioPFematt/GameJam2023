@@ -11,8 +11,16 @@ public class EnemyDamage : MonoBehaviour
     private bool canBeHit = true; 
     void OnTriggerEnter2D(Collider2D other){
         if(other.gameObject.CompareTag("Bullet") && canBeHit){
-            hitPoints --;
+            hitPoints--;
             StartCoroutine(Count());
+            var hc = GetComponent<HealthEnemyScript>();
+            if(hc != null){
+                hc.SetWakeUp(true);
+            }
+            var ge = GetComponent<GenericEnemyScript>();
+            if(ge != null){
+                ge.WakeUp();
+            }
         } 
     }
     IEnumerator Count(){

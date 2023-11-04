@@ -17,7 +17,7 @@ public class PlayerDamage : MonoBehaviour
     }
     IEnumerator Count(){
         canBeHit = false;
-        Renderer rend = this.transform.GetChild(0).GetComponent<Renderer>();
+        Renderer rend = GetComponent<Renderer>();
         rend.material.color = new Color(rend.material.color.r, rend.material.color.g, rend.material.color.b, 0.3f);
         yield return new WaitForSeconds(0.5f);
         rend.material.color = new Color(rend.material.color.r, rend.material.color.g, rend.material.color.b, 1f);
