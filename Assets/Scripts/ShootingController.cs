@@ -26,7 +26,7 @@ public class ShootingController : MonoBehaviour
             Vector2 direction = worldMousePos - transform.position;
             direction.Normalize();
             GameObject newBullet;            
-            newBullet = Instantiate(bullet, transform.position, transform.rotation);
+            newBullet = Instantiate(bullet, transform.GetChild(0).transform.position, transform.GetChild(0).transform.rotation);
             /*clone.GetComponent<PlayerBullet>().bulletDamage = bulletDamage;
             clone.GetComponent<PlayerBullet>().bulletSpeed = bulletSpeed;
             clone.GetComponent<PlayerBullet>().bulletDirection = direction;*/
