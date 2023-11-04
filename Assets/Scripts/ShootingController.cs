@@ -10,7 +10,7 @@ public class ShootingController : MonoBehaviour
     public float bulletSpeed = 5.0f;
     public GameObject bullet;
 
-    public Camera mainCamera;
+    private Camera mainCamera;
     void Start(){
         mainCamera = Camera.main;
     }

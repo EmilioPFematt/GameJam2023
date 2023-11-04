@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class BulletBehaviour : MonoBehaviour
 {
-    // Start is called before the first frame update
+    private int cicleLives = 50; 
+    // Sta rt is called before the first frame update
     void Start()
     {
         
@@ -14,5 +15,16 @@ public class BulletBehaviour : MonoBehaviour
     void Update()
     {
         
+    }
+
+    void FixedUpdate() {
+        cicleLives--;
+        if(cicleLives <= 0) Destroy(gameObject);
+    }
+
+    private void OnTriggerEnter2D(Collider2D other){
+        if(other.gameObject.tag != "Player"){
+            Destroy(gameObject);
+        }
     }
 }

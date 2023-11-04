@@ -13,6 +13,8 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D rb;
     private float localVelocity=0; 
     public float jumpSpeed; 
+
+    public float frictionMult;
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -21,7 +23,8 @@ public class PlayerController : MonoBehaviour
     * Checks if player is grounded by raycasting down to check if a collider exists below the player.
     */
     private bool isGrounded(){
-        return Physics2D.Raycast(transform.position, -transform.up, 0.1f);
+        Debug.Log("Here");
+        return Physics2D.Raycast(transform.position, -transform.up, 1.1f);
     }
     // Update is called once per frame
     void Update()
@@ -41,7 +44,7 @@ public class PlayerController : MonoBehaviour
             if(Math.Abs(localVelocity) > maxSpeed) localVelocity = maxSpeed * Math.Sign(localVelocity);
         }
         else { 
-            localVelocity = (Math.Abs(localVelocity) - playerAccel * 2 * Time.deltaTime) * Math.Sign(localVelocity); 
+            localVelocity = (Math.Abs(localVelocity) - playerAccel * frictionMult * Time.deltaTime) * Math.Sign(localVelocity); 
             if(Math.Abs(localVelocity) < 0.05f) localVelocity = 0;
         }
         
