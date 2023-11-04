@@ -13,11 +13,13 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D rb;
     private float localVelocity=0; 
     public float jumpSpeed; 
-
     public float frictionMult;
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+    }
+    public float getSpeed() {
+        return localVelocity;
     }
     /**
     * Checks if player is grounded by raycasting down to check if a collider exists below the player.
@@ -48,6 +50,6 @@ public class PlayerController : MonoBehaviour
             if(Math.Abs(localVelocity) < 0.05f) localVelocity = 0;
         }
         
-        transform.position = new Vector3(transform.position.x + localVelocity * Time.deltaTime, transform.position.y, transform.position.x);
+        transform.position = new Vector3(transform.position.x + localVelocity * Time.deltaTime, transform.position.y, transform.position.z);
     }   
 }
