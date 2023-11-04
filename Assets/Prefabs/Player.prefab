@@ -107,7 +107,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!114 &4761446603351743202
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -123,6 +123,7 @@ MonoBehaviour:
   maxSpeed: 0
   playerAccel: 0
   jumpSpeed: 0
+  frictionMult: 0
 --- !u!114 &2501020960725171973
 MonoBehaviour:
   m_ObjectHideFlags: 0
