@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,12 +13,19 @@ public class HandBehaviour : MonoBehaviour
     void Update()
     {
         Vector3 worldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        if(transform.position.x > worldPosition.x) {
+        var rightStickX = Input.GetAxisRaw("Mouse X") * -10;
+        var rightStickY = Input.GetAxisRaw("Mouse Y") * 10;
+        Vector3 Direction =  new Vector3(transform.position.x,transform.position.y,0) - new Vector3(worldPosition.x,worldPosition.y,0);
+        if(Math.Abs(rightStickX) > 0.005f || Math.Abs(rightStickY) > 0.005f) Direction = new Vector3(rightStickX, rightStickY, 0);
+        Direction.Normalize();  
+
+        Debug.Log(Direction);
+
+        if(Direction.x > 0) {
             render.flipX = true;
         }
         else render.flipX = false;
-        Vector3 Direction =  new Vector3(transform.position.x,transform.position.y,0) - new Vector3(worldPosition.x,worldPosition.y,0);
-        Direction.Normalize();
+
         transform.up = Direction;
     }
 }

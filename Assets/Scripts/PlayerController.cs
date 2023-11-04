@@ -27,7 +27,7 @@ public class PlayerController : MonoBehaviour
     * Checks if player is grounded by raycasting down to check if a collider exists below the player.
     */
     private bool isGrounded(){
-        return Physics2D.Raycast(transform.position, -transform.up, 5.0f);
+        return Physics2D.Raycast(transform.position, -transform.up, 2f);
     }
     // Update is called once per frame
     void Update()
@@ -37,13 +37,19 @@ public class PlayerController : MonoBehaviour
         /*if(Math.Abs(horizontalInput) > 0.4f) horizontalInput = horizontalInput > 0f?1f:-1f;
         else horizontalInput = 0;*/
         //Debug.Log(horizontalInput);
+
+        bool flip;
         Vector3 worldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        if(transform.position.x > worldPosition.x) {
-            render.flipX = true;
-        }
-        else render.flipX = false;
+        if(transform.position.x > worldPosition.x) flip = true;
+        else flip = false;
+
+        var rightStickX = Input.GetAxisRaw("Mouse X") * -10;
+
+        if(Math.Abs(rightStickX) > 0.005f) flip = rightStickX > 0.005f;
+
+        render.flipX = flip;
         //Process jump using unity physics
-        if(Input.GetKeyDown(KeyCode.Space)) {
+        if(Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Joystick1Button1) || Input.GetKeyDown(KeyCode.Joystick1Button4)) {
             //Debug.Log(isGrounded());
             if(isGrounded()) rb.AddForce(transform.up * jumpSpeed, ForceMode2D.Impulse);
         }

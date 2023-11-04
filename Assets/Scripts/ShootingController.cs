@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -15,7 +16,7 @@ public class ShootingController : MonoBehaviour
         mainCamera = Camera.main;
     }
     void Update(){
-        if(Input.GetMouseButton(0)){
+        if(Input.GetMouseButton(0) || Input.GetKeyDown(KeyCode.Joystick1Button0) || Input.GetKeyDown(KeyCode.Joystick1Button5)){
             Shoot();
         }
     }
@@ -24,6 +25,9 @@ public class ShootingController : MonoBehaviour
             // Obtener dirección de disparo
             Vector3 worldMousePos = mainCamera.ScreenToWorldPoint(Input.mousePosition);
             Vector2 direction = worldMousePos - transform.position;
+            var rightStickX = Input.GetAxisRaw("Mouse X") * 10;
+            var rightStickY = Input.GetAxisRaw("Mouse Y") * -10;
+            if(Math.Abs(rightStickX) > 0.05f || Math.Abs(rightStickY) > 0.05f) direction = new Vector3(rightStickX, rightStickY, 0);
             direction.Normalize();
             GameObject newBullet;            
             newBullet = Instantiate(bullet, transform.GetChild(0).transform.position, transform.GetChild(0).transform.rotation);
@@ -31,8 +35,6 @@ public class ShootingController : MonoBehaviour
             clone.GetComponent<PlayerBullet>().bulletSpeed = bulletSpeed;
             clone.GetComponent<PlayerBullet>().bulletDirection = direction;*/
             newBullet.GetComponent<Rigidbody2D>().velocity = (direction) * (bulletSpeed);
-
-
             // Actualizar
             timeSinceLastFire = Time.time;
         }
