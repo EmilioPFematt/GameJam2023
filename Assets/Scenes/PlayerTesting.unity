@@ -3316,15 +3316,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4761446603351743202, guid: c331b2eca89a0134994dfc4a6860452a, type: 3}
       propertyPath: jumpSpeed
-      value: 30
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 4761446603351743202, guid: c331b2eca89a0134994dfc4a6860452a, type: 3}
       propertyPath: playerAccel
-      value: 60
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 4761446603351743202, guid: c331b2eca89a0134994dfc4a6860452a, type: 3}
       propertyPath: frictionMult
-      value: 5
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 7861343067196187706, guid: c331b2eca89a0134994dfc4a6860452a, type: 3}
       propertyPath: m_LocalPosition.x

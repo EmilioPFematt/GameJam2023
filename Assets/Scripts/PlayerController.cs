@@ -14,9 +14,11 @@ public class PlayerController : MonoBehaviour
     private float localVelocity=0; 
     public float jumpSpeed; 
     public float frictionMult;
+    private SpriteRenderer render;
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        render = GetComponent<SpriteRenderer>();
     }
     public float getSpeed() {
         return localVelocity;
@@ -31,9 +33,15 @@ public class PlayerController : MonoBehaviour
     void Update()
     {   
         // Recieve horizontal input from the player
-        float horizontalInput = Input.GetAxis("Horizontal");
-        if(horizontalInput != 0) horizontalInput = horizontalInput > 0f?1f:-1f;
-        
+        float horizontalInput = Input.GetAxisRaw("Horizontal");
+        /*if(Math.Abs(horizontalInput) > 0.4f) horizontalInput = horizontalInput > 0f?1f:-1f;
+        else horizontalInput = 0;*/
+        //Debug.Log(horizontalInput);
+        Vector3 worldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        if(transform.position.x > worldPosition.x) {
+            render.flipX = true;
+        }
+        else render.flipX = false;
         //Process jump using unity physics
         if(Input.GetKeyDown(KeyCode.Space)) {
             //Debug.Log(isGrounded());
@@ -47,7 +55,7 @@ public class PlayerController : MonoBehaviour
         }
         else { 
             localVelocity = (Math.Abs(localVelocity) - playerAccel * frictionMult * Time.deltaTime) * Math.Sign(localVelocity); 
-            if(Math.Abs(localVelocity) < 0.1f) localVelocity = 0;
+            if(Math.Abs(localVelocity) < 0.05f) localVelocity = 0;
         }
         
         transform.position = new Vector3(transform.position.x + localVelocity * Time.deltaTime, transform.position.y, transform.position.z);
