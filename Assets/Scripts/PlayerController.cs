@@ -31,7 +31,9 @@ public class PlayerController : MonoBehaviour
     void Update()
     {   
         // Recieve horizontal input from the player
-        int horizontalInput = (Input.GetKey(KeyCode.D)?1:0) - (Input.GetKey(KeyCode.A)?1:0);
+        float horizontalInput = Input.GetAxis("Horizontal");
+        horizontalInput = Mathf.Clamp(horizontalInput, -1.0f, 1.0f);
+        horizontalInput = horizontalInput > 0 ? 1 : horizontalInput < 0 ? -1 : 0;
         
         //Process jump using unity physics
         if(Input.GetKeyDown(KeyCode.Space)) {
