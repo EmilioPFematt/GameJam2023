@@ -11,8 +11,19 @@ public class PlayerDamage : MonoBehaviour
     private bool canBeHit = true; 
     void OnTriggerStay2D(Collider2D other){
         if(other.gameObject.CompareTag("Enemy") && canBeHit){
-            hitPoints --;
-            StartCoroutine(Count());
+            var sleeping = other.GetComponent<SleepingEnemyScript>();
+            var health = other.GetComponent<HealthEnemyScript>();  
+            bool damage = true;
+            if(sleeping != null){
+                damage = sleeping.awake;
+            }
+            else if(health != null){
+                damage = health.active;
+            }
+            if(damage){ 
+                hitPoints --;
+                StartCoroutine(Count());
+            }
         } 
     }
     IEnumerator Count(){

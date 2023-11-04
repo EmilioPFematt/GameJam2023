@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class GenericEnemyScript : MonoBehaviour
 {
-    private bool awake = false;
     public float speed = 2.0f;
 
     private GameObject player;
@@ -15,18 +14,13 @@ public class GenericEnemyScript : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
     }
 
-    public void WakeUp(){
-        awake = true;
-    }
+
 
     // Update is called once per frame
     void Update()
     {
-        if(awake){
-            Transform target = player.transform;
-            Vector3 moveDirection = new Vector3(target.position.x, transform.position.y, transform.position.z);
-            transform.position = Vector3.MoveTowards(transform.position, moveDirection, speed * Time.deltaTime);
-        }
-        
+        Transform target = player.transform;
+        Vector3 moveDirection = new Vector3(target.position.x, transform.position.y, transform.position.z);
+        transform.position = Vector3.MoveTowards(transform.position, moveDirection, speed * Time.deltaTime);
     }
 }

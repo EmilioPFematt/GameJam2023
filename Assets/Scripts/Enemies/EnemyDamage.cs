@@ -13,13 +13,13 @@ public class EnemyDamage : MonoBehaviour
         if(other.gameObject.CompareTag("Bullet") && canBeHit){
             hitPoints--;
             StartCoroutine(Count());
-            var hc = GetComponent<HealthEnemyScript>();
-            if(hc != null){
-                hc.SetWakeUp(true);
+            var health = GetComponent<HealthEnemyScript>();
+            if(health != null){
+                health.SetWakeUp(true);
             }
-            var ge = GetComponent<GenericEnemyScript>();
-            if(ge != null){
-                ge.WakeUp();
+            var sleeping = GetComponent<SleepingEnemyScript>();
+            if(sleeping != null){
+                sleeping.WakeUp();
             }
         } 
     }

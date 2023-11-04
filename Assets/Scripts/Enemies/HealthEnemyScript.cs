@@ -11,7 +11,7 @@ public class HealthEnemyScript : MonoBehaviour
     private float localSpeed = 0.0f; 
     private GameObject player;
     private float angle = 0.5f;
-    private bool active = false;
+    public bool active = false;
 
     IEnumerator IdleBehavior(){
         while(true){
