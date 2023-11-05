@@ -19,24 +19,30 @@ public class SwoopingEnemyScript : MonoBehaviour
     private bool attacking = true;
     private int restDirection = -1;
     public float swoopDepth = -4.0f; 
-    private bool setTarget = true;
+    private bool setTarget = false;
     // Start is called before the first frame update
     void Start()
     {
-        
-        player = GameObject.FindGameObjectWithTag("Player");
+    }
+
+    public void setAwake() {
+        awake = true;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if(GameManager.Instance.State == GameState.Game){
+            player = GameObject.FindGameObjectWithTag("Player");
+        }
+        if(gameObject.name == "Window") {Debug.Log(target);}
         if(awake) {
             if(attacking && !setTarget) {
-                target = new Vector3(player.transform.position.x, swoopDepth, 0); 
-                //setTarget = true;
+                target = new Vector3(player.transform.position.x, swoopDepth, transform.position.z); 
+                setTarget = true;
             }
             else if(!setTarget){
-                target = new Vector3(player.transform.position.x + restDistance*restDirection, restingHeight, 0); 
+                target = new Vector3(player.transform.position.x + restDistance*restDirection, restingHeight, transform.position.z); 
                 setTarget = true;
             }
             if(Math.Abs(transform.position.x - target.x) < 0.05f && Math.Abs(transform.position.y - target.y) < 0.05f) { 

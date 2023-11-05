@@ -13,7 +13,7 @@ public class PlayerDamage : MonoBehaviour
     
     void OnTriggerStay2D(Collider2D other){
         Debug.Log(other.name);
-        if(other.gameObject.CompareTag("Enemy") && canBeHit){
+        if((other.gameObject.CompareTag("Enemy") || other.gameObject.CompareTag("Boss")) && canBeHit){
             var sleeping = other.GetComponent<SleepingEnemyScript>();
             var health = other.GetComponent<HealthEnemyScript>();  
             bool damage = true;

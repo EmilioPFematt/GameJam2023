@@ -96,9 +96,9 @@ GameObject:
   - component: {fileID: 8113554222470038567}
   - component: {fileID: 3911878194030566458}
   - component: {fileID: 8574276352730616750}
-  - component: {fileID: 7672017902749434587}
   - component: {fileID: 8224285307323133216}
   - component: {fileID: 2015771670406445977}
+  - component: {fileID: 6240301003221345407}
   m_Layer: 0
   m_Name: Window
   m_TagString: Boss
@@ -206,20 +206,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isSpawned: 1
   child: {fileID: 0}
---- !u!114 &7672017902749434587
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1909574715361633060}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b001e129ac75d8e44b033375054a2a84, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  active: 0
-  dist: 6
 --- !u!114 &8224285307323133216
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -233,7 +219,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   flashMaterial: {fileID: 2100000, guid: 5c65a609232af8f4da0f1b604fe927cf, type: 2}
-  hitPoints: 5
+  hitPoints: 10
 --- !u!212 &2015771670406445977
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -286,6 +272,23 @@ SpriteRenderer:
   m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &6240301003221345407
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1909574715361633060}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36d84486add0d9442808fb8f0b45a133, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  awake: 0
+  speed: 10
+  restingHeight: 5
+  restDistance: 5
+  swoopDepth: -6
 --- !u!1 &1960014286254643807
 GameObject:
   m_ObjectHideFlags: 0
