@@ -9,13 +9,9 @@ public class EnemyDamage : MonoBehaviour
     // Start is called before the first frame update
     public int hitPoints = 5;
     private bool canBeHit = true; 
-    private SoundManager soundManager;
-    void Start(){
-        soundManager = GameObject.FindGameObjectWithTag("sfx").GetComponent<SoundManager>();
-    }
     void OnTriggerEnter2D(Collider2D other){
         if(other.gameObject.CompareTag("Bullet") && canBeHit){
-            soundManager.playSound(1);
+            SoundManager.Instance.playSound(1);
             hitPoints--;
             StartCoroutine(Count());
             var health = GetComponent<HealthEnemyScript>();

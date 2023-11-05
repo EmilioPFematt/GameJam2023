@@ -6,11 +6,13 @@ public class MusicManager : MonoBehaviour
 {
     public AudioClip menuMusic;
     public AudioClip gameMusic;
+    public static MusicManager Instance;
 
     private AudioSource audioSource;
 
     void Start()
     {
+        Instance = this;
         audioSource = GetComponent<AudioSource>();
         ChangeToMenuMusic();
     }

@@ -17,13 +17,11 @@ public class PlayerController : MonoBehaviour
     public float frictionMult;
     private SpriteRenderer render;
     private Animator animator; 
-    private SoundManager soundManager;
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         render = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>(); 
-        soundManager = GameObject.FindGameObjectWithTag("sfx").GetComponent<SoundManager>();
     }
     public float getSpeed() {
         return localVelocity;
@@ -53,7 +51,7 @@ public class PlayerController : MonoBehaviour
         //Process jump using unity physics
         if((Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Joystick1Button1) || Input.GetKeyDown(KeyCode.Joystick1Button4)) && isGrounded()) {
             rb.AddForce(transform.up * jumpSpeed, ForceMode2D.Impulse);
-            soundManager.playSound(4);
+            SoundManager.Instance.playSound(4);
         }
 
         // Calculate velocity using acceleration variables

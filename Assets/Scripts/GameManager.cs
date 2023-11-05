@@ -9,12 +9,10 @@ public class GameManager : MonoBehaviour
 
     public GameState State;
     public static event Action<GameState> OnGameStateChanged;
-    private MusicManager musicManager;
     // Start is called before the first frame update
     void Awake()
     {
       Instance = this;   
-      musicManager = GameObject.FindGameObjectWithTag("music").GetComponent<MusicManager>();
     }
 
     void Start()
@@ -66,7 +64,7 @@ public class GameManager : MonoBehaviour
 
     private void HandleGame(){
         Time.timeScale = 1f;
-        musicManager.ChangeToGameMusic();
+        MusicManager.Instance.ChangeToGameMusic();
     }
 
     private void HandlePauseMenu(){
