@@ -17,11 +17,13 @@ public class PlayerController : MonoBehaviour
     public float frictionMult;
     private SpriteRenderer render;
     private Animator animator; 
+    private SoundManager soundManager;
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         render = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>(); 
+        soundManager = GameObject.FindGameObjectWithTag("sfx").GetComponent<SoundManager>();
     }
     public float getSpeed() {
         return localVelocity;
@@ -37,9 +39,6 @@ public class PlayerController : MonoBehaviour
     {   
         // Recieve horizontal input from the player
         float horizontalInput = Input.GetAxisRaw("Horizontal");
-        /*if(Math.Abs(horizontalInput) > 0.4f) horizontalInput = horizontalInput > 0f?1f:-1f;
-        else horizontalInput = 0;*/
-        //Debug.Log(horizontalInput);
 
         bool flip;
         Vector3 worldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -52,9 +51,9 @@ public class PlayerController : MonoBehaviour
 
         render.flipX = flip;
         //Process jump using unity physics
-        if(Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Joystick1Button1) || Input.GetKeyDown(KeyCode.Joystick1Button4)) {
-            //Debug.Log(isGrounded());
-            if(isGrounded()) rb.AddForce(transform.up * jumpSpeed, ForceMode2D.Impulse);
+        if((Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Joystick1Button1) || Input.GetKeyDown(KeyCode.Joystick1Button4)) && isGrounded()) {
+            rb.AddForce(transform.up * jumpSpeed, ForceMode2D.Impulse);
+            soundManager.playSound(4);
         }
 
         // Calculate velocity using acceleration variables
