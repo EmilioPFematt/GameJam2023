@@ -6,13 +6,26 @@ using UnityEngine.Events;
 
 public class EnemyDamage : MonoBehaviour
 {
+
+    [Tooltip("Material to switch to during the flash.")]
+    [SerializeField] private Material flashMaterial;
+
+
+    // The SpriteRenderer that should flash.
+    private SpriteRenderer spriteRenderer;
+        
+    // The material that was in use, when the script started.
+    private Material originalMaterial;
+
     // Start is called before the first frame update
     public int hitPoints = 5;
     private bool canBeHit = true; 
+
     void OnTriggerEnter2D(Collider2D other){
         if(other.gameObject.CompareTag("Bullet") && canBeHit){
             SoundManager.Instance.playSound(1);
             hitPoints--;
+            StartCoroutine(FlashRoutine());
             StartCoroutine(Count());
             var health = GetComponent<HealthEnemyScript>();
             if(health != null){
@@ -24,6 +37,7 @@ public class EnemyDamage : MonoBehaviour
             }
         } 
     }
+
     IEnumerator Count(){
         canBeHit = false;
         Renderer rend = GetComponent<Renderer>();
@@ -36,6 +50,32 @@ public class EnemyDamage : MonoBehaviour
         rend.material.color = new Color(ogColor.r, ogColor.g, ogColor.b, 1f);
         canBeHit = true; 
     }
+
+
+    private IEnumerator FlashRoutine()
+    {
+        // Swap to the flashMaterial.
+
+        Debug.Log("flashroutine");
+        // Get the SpriteRenderer to be used,
+        // alternatively you could set it from the inspector.
+        spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
+
+        // Get the material that the SpriteRenderer uses, 
+        // so we can switch back to it after the flash ended.
+        originalMaterial = spriteRenderer.material;
+
+        spriteRenderer.material = flashMaterial;
+
+        // Pause the execution of this function for "duration" seconds.
+        yield return new WaitForSeconds(0.1f);
+
+        // After the pause, swap back to the original material.
+        spriteRenderer.material = originalMaterial;
+    }
+
+    
+
     void Update()
     {
         if(hitPoints == 0){
