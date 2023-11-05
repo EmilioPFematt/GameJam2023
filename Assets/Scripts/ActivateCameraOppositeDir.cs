@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class ActivateCameraOppositeDir : MonoBehaviour
 {
+    public GameObject errorMessage; 
+    public GameObject healthBar;
     void OnTriggerEnter2D(Collider2D other){
-        if(other.gameObject.CompareTag("Player")){
-            CameraController.Instance.canMove = true;
-        }
-    }
-     void OnTriggerExit2D (Collider2D other){
-        if(other.gameObject.CompareTag("Player")){
+        if(other.gameObject.CompareTag("Player") && healthBar == null){
             CameraController.Instance.canMove = false;
+            errorMessage.SetActive(true);
+            Destroy(gameObject);
         }
     }
+     
 }
