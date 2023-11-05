@@ -204,7 +204,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1115d74ddc605be4d82cdb15aa6630d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isSpawned: 0
+  isSpawned: 1
   child: {fileID: 0}
 --- !u!114 &7672017902749434587
 MonoBehaviour:
