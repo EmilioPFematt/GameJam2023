@@ -9,6 +9,10 @@ public class GameManager : MonoBehaviour
 
     public GameState State;
     public static event Action<GameState> OnGameStateChanged;
+
+    public Texture2D cursorTexture;
+    public CursorMode cursorMode = CursorMode.Auto;
+    public Vector2 hotSpot = Vector2.zero;
     // Start is called before the first frame update
     void Awake()
     {
@@ -18,6 +22,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         UpdateGameState(GameState.MainMenu);
+        Cursor.SetCursor(cursorTexture, hotSpot, cursorMode);   
     }
 
     // Update is called once per frame
