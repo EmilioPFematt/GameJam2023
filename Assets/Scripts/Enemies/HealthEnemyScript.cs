@@ -38,7 +38,6 @@ public class HealthEnemyScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        player = GameObject.FindWithTag("Player");
          if(GetComponent<Animator>() != null){
             animator = GetComponent<Animator>();
         }
@@ -59,6 +58,9 @@ public class HealthEnemyScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(GameManager.Instance.State == GameState.Game){
+            player = GameObject.FindGameObjectWithTag("Player");
+        }
         if(active){
             animator.SetBool("turnEvil", true);
             Vector3 target = FindPosition(angle, dist);
