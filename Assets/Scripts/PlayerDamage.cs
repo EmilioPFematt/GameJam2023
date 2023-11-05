@@ -25,19 +25,21 @@ public class PlayerDamage : MonoBehaviour
             if(damage){ 
                 hitPoints --;
                 SoundManager.Instance.playSound(2);
-                StartCoroutine(Count());
+                StartCoroutine(Count(other));
             }
         } 
     }
-    IEnumerator Count(){
+    IEnumerator Count(Collider2D other){
         canBeHit = false;
         Renderer rend = GetComponent<Renderer>();
         Renderer childRend = transform.GetChild(0).gameObject.GetComponent<Renderer>();
+        other.gameObject.GetComponent<Collider2D>().enabled = false; 
         rend.material.color = new Color(rend.material.color.r, rend.material.color.g, rend.material.color.b, 0.3f);
         childRend.material.color = new Color(childRend.material.color.r, childRend.material.color.g, childRend.material.color.b, 0.3f);
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1f);
         rend.material.color = new Color(rend.material.color.r, rend.material.color.g, rend.material.color.b, 1f);
         childRend.material.color = new Color(childRend.material.color.r, childRend.material.color.g, childRend.material.color.b, 1f);
+        other.gameObject.GetComponent<Collider2D>().enabled = true; 
         canBeHit = true; 
     }
     void Update()
