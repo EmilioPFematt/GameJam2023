@@ -19,8 +19,8 @@ public class EnemyDamage : MonoBehaviour
                 health.SetWakeUp(true);
             }
             var sleeping = GetComponent<SleepingEnemyScript>();
-            if(sleeping != null){
-                sleeping.WakeUp();
+            if(sleeping != null && !GetComponent<SleepingEnemyScript>().awake){
+                StartCoroutine(sleeping.WakeUp());
             }
         } 
     }
