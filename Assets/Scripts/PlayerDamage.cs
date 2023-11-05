@@ -14,6 +14,7 @@ public class PlayerDamage : MonoBehaviour
         soundManager = GameObject.FindGameObjectWithTag("sfx").GetComponent<SoundManager>();
     }
     void OnTriggerStay2D(Collider2D other){
+        Debug.Log(other.name);
         if(other.gameObject.CompareTag("Enemy") && canBeHit){
             var sleeping = other.GetComponent<SleepingEnemyScript>();
             var health = other.GetComponent<HealthEnemyScript>();  
