@@ -50,9 +50,9 @@ public class PlayerDamage : MonoBehaviour
         }
     }
     IEnumerator Death(){
-        this.enabled = false;
-        SoundManager.Instance.playSound(10);
-        yield return new WaitForSeconds(0.3f);
+        //this.enabled = false;
+        MusicManager.Instance.ChangeToGameOver();
+        yield return new WaitForSeconds(3f);
         Scene currentScene = SceneManager.GetActiveScene();
         SceneManager.LoadScene(currentScene.name);
     }

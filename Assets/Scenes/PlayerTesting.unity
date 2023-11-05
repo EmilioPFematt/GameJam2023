@@ -581,7 +581,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 1c547374b69b5994b9368aa6f8dc7971, type: 3}
+  m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -706,6 +706,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 5fb3d71006694f746b7f2330e7ee76eb, type: 3}
   - {fileID: 8300000, guid: 207aebe572017e24e87c3a0c1b8d2f95, type: 3}
   - {fileID: 8300000, guid: 7aef94e12f748314aabdb9d46c340040, type: 3}
+  - {fileID: 8300000, guid: 0ce6095d28ba6624195c9e96a81928c2, type: 3}
 --- !u!1 &166949875
 GameObject:
   m_ObjectHideFlags: 0
@@ -1074,7 +1075,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -5748,6 +5749,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   menuMusic: {fileID: 8300000, guid: 3c21dc5d7a7ef364d888783f489fcceb, type: 3}
   gameMusic: {fileID: 8300000, guid: 37a555e6737262140a7d04dcb86d79b0, type: 3}
+  gameOverMusic: {fileID: 8300000, guid: 0ce6095d28ba6624195c9e96a81928c2, type: 3}
 --- !u!1 &1701995874
 GameObject:
   m_ObjectHideFlags: 0

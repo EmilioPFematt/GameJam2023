@@ -6,6 +6,7 @@ public class MusicManager : MonoBehaviour
 {
     public AudioClip menuMusic;
     public AudioClip gameMusic;
+    public AudioClip gameOverMusic;
     public static MusicManager Instance;
 
     private AudioSource audioSource;
@@ -26,6 +27,11 @@ public class MusicManager : MonoBehaviour
     public void ChangeToMenuMusic()
     {
         audioSource.clip = menuMusic; 
+        audioSource.Play(); 
+    }
+    public void ChangeToGameOver()
+    {
+        audioSource.clip = gameOverMusic; 
         audioSource.Play(); 
     }
 }
