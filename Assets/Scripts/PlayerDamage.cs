@@ -46,8 +46,14 @@ public class PlayerDamage : MonoBehaviour
     void Update()
     {
         if(hitPoints == 0){
-            Scene currentScene = SceneManager.GetActiveScene();
-            SceneManager.LoadScene(currentScene.name);
+            StartCoroutine(Death());
         }
+    }
+    IEnumerator Death(){
+        this.enabled = false;
+        SoundManager.Instance.playSound(10);
+        yield return new WaitForSeconds(0.3f);
+        Scene currentScene = SceneManager.GetActiveScene();
+        SceneManager.LoadScene(currentScene.name);
     }
 }

@@ -24,7 +24,7 @@ public class SleepingEnemyScript : MonoBehaviour
         if(GetComponent<Animator>() != null){
             animator.SetBool("wakeUp", true);
             Vector3 currentPosition = transform.position;
-            currentPosition.y += 1f;
+            currentPosition.y -= 1.5f;
             transform.position = currentPosition;
             yield return new WaitForSeconds(1f);
             animator.SetBool("walk", true);
