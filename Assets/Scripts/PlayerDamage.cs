@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 public class PlayerDamage : MonoBehaviour
 {
@@ -45,7 +46,8 @@ public class PlayerDamage : MonoBehaviour
     void Update()
     {
         if(hitPoints == 0){
-            Debug.Log("PLAYER IS DEAD");
+            Scene currentScene = SceneManager.GetActiveScene();
+            SceneManager.LoadScene(currentScene.name);
         }
     }
 }
