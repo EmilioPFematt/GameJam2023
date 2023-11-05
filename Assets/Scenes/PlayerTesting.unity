@@ -7259,6 +7259,7 @@ MonoBehaviour:
   foreground: {fileID: 785397380}
   rightWall: {fileID: 1931064695}
   bossAreanPrefab: {fileID: 6103713406419006382, guid: 529c34a0853bdfe4486ca1c417787d2f, type: 3}
+  background: {fileID: 1388040979}
 --- !u!212 &2112607063
 SpriteRenderer:
   m_ObjectHideFlags: 0
