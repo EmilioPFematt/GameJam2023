@@ -3304,7 +3304,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1029485093
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7694,11 +7694,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1269289857704888126, guid: ec5faa45be611734ea6ae452bd1676f4, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 30.6
+      value: 36.01
       objectReference: {fileID: 0}
     - target: {fileID: 1269289857704888126, guid: ec5faa45be611734ea6ae452bd1676f4, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.73
+      value: 1.96
       objectReference: {fileID: 0}
     - target: {fileID: 1269289857704888126, guid: ec5faa45be611734ea6ae452bd1676f4, type: 3}
       propertyPath: m_LocalPosition.z
@@ -7735,6 +7735,26 @@ PrefabInstance:
     - target: {fileID: 1442778383733193326, guid: ec5faa45be611734ea6ae452bd1676f4, type: 3}
       propertyPath: m_Name
       value: Bat
+      objectReference: {fileID: 0}
+    - target: {fileID: 4893619854623955098, guid: ec5faa45be611734ea6ae452bd1676f4, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6722279111381017045, guid: ec5faa45be611734ea6ae452bd1676f4, type: 3}
+      propertyPath: m_Size.x
+      value: 0.17551063
+      objectReference: {fileID: 0}
+    - target: {fileID: 6722279111381017045, guid: ec5faa45be611734ea6ae452bd1676f4, type: 3}
+      propertyPath: m_Size.y
+      value: 0.14350846
+      objectReference: {fileID: 0}
+    - target: {fileID: 6722279111381017045, guid: ec5faa45be611734ea6ae452bd1676f4, type: 3}
+      propertyPath: m_Offset.x
+      value: 0.008999042
+      objectReference: {fileID: 0}
+    - target: {fileID: 6722279111381017045, guid: ec5faa45be611734ea6ae452bd1676f4, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.013498511
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
