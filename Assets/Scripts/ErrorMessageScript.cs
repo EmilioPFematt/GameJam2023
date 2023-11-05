@@ -18,7 +18,7 @@ public class ErrorMessageScript : MonoBehaviour
             rightWall.SetActive(false);
             background.SetActive(false);
             Transform playerPosition =  GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
-            GameObject bossArena = Instantiate(bossAreanPrefab, camera.ViewportToWorldPoint(new Vector2(0.5f, 0.5f)), Quaternion.identity);
+            GameObject bossArena = Instantiate(bossAreanPrefab, new Vector3(camera.transform.position.x, 0.25f, 0f), Quaternion.identity);
             Destroy(this.gameObject);
         }
     }

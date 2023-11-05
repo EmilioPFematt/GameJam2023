@@ -27,9 +27,13 @@ public class EnemyDamage : MonoBehaviour
     IEnumerator Count(){
         canBeHit = false;
         Renderer rend = GetComponent<Renderer>();
-        rend.material.color = new Color(rend.material.color.r, rend.material.color.g, rend.material.color.b, 0.3f);
+        rend.material.color = new Color(rend.material.color.r, rend.material.color.g, rend.material.color.b, 0.7f);
+        //rend.material.color = new Color(1f, 1f, 1f, 1f);
+        Color ogColor = rend.material.color;
         yield return new WaitForSeconds(0.5f);
-        rend.material.color = new Color(rend.material.color.r, rend.material.color.g, rend.material.color.b, 1f);
+        //rend.material.color = new Color(1f, 1f, 1f, 1f);
+        //yield return new WaitForSeconds(0.1f);
+        rend.material.color = new Color(ogColor.r, ogColor.g, ogColor.b, 1f);
         canBeHit = true; 
     }
     void Update()
