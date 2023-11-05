@@ -9,14 +9,10 @@ public class SleepingEnemyScript : MonoBehaviour
 
     private GameObject player;
     private Animator animator;
-    private BoxCollider2D boxCollider;
-    private SpriteRenderer spriteRenderer;
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
-        boxCollider = GetComponent<BoxCollider2D>();
-        spriteRenderer = GetComponent<SpriteRenderer>();
         if(GetComponent<Animator>() != null){
             animator = GetComponent<Animator>();
         }
@@ -29,12 +25,9 @@ public class SleepingEnemyScript : MonoBehaviour
             animator.SetBool("wakeUp", true);
             Vector3 currentPosition = transform.position;
             currentPosition.y += 1f;
+            transform.position = currentPosition;
             yield return new WaitForSeconds(1f);
             animator.SetBool("walk", true);
-            boxCollider.size = new Vector3(0.60f,0.60f,1f);
-            
-        // Update the object's position
-            transform.position = currentPosition;
         }   
     }
 
