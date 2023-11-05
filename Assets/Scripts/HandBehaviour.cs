@@ -24,9 +24,6 @@ public class HandBehaviour : MonoBehaviour
         if(Math.Abs(rightStickX) > 0.005f || Math.Abs(rightStickY) > 0.005f) Direction = new Vector3(rightStickX, rightStickY, 0);
 
         Direction.Normalize();  
-
-        //Debug.Log(Direction);
-
         if(Direction.x > 0) {
             render.flipX = true;
         }
