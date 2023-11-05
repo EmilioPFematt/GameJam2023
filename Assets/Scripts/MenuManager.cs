@@ -7,7 +7,8 @@ using UnityEngine.SceneManagement;
 
 public class MenuManager : MonoBehaviour
 {
-    [SerializeField] private GameObject _MainMenu, _PauseMenu, _HUD, _GameOver, _EndScreen;
+    [SerializeField] private GameObject _MainMenu, _PauseMenu, _HUD, _GameOver, _EndScreen, Player;
+
     public static bool isPaused { get; private set; } = false;
 
     void Awake(){
@@ -37,6 +38,7 @@ public class MenuManager : MonoBehaviour
         _HUD.SetActive(state == GameState.Game);
         _GameOver.SetActive(state == GameState.Death);
         _EndScreen.SetActive(state == GameState.End);
+        Player.SetActive(state == GameState.Game);
     }
 
     public void StartGame(){
@@ -55,12 +57,14 @@ public class MenuManager : MonoBehaviour
     public void PauseGame(){
         isPaused = true;
         _PauseMenu.SetActive(true);
+        Player.SetActive(false);
          Time.timeScale = 0f;
     }
 
     public void Resume(){
         isPaused = false;
         _PauseMenu.SetActive(false);
+        Player.SetActive(true);
         Time.timeScale = 1f;
     }
 

@@ -12,7 +12,7 @@ public class SleepingEnemyScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player");
+        
         if(GetComponent<Animator>() != null){
             animator = GetComponent<Animator>();
         }
@@ -34,6 +34,9 @@ public class SleepingEnemyScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(GameManager.Instance.State == GameState.Game){
+            player = GameObject.FindGameObjectWithTag("Player");
+        }
         if(awake){
             Transform target = player.transform;
             Vector3 moveDirection = new Vector3(target.position.x, transform.position.y, transform.position.z);

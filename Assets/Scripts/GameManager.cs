@@ -78,6 +78,7 @@ public class GameManager : MonoBehaviour
 
     private void HandleGame(){
         Time.timeScale = 1f;
+
         MusicManager.Instance.ChangeToGameMusic();
     }
 
@@ -91,12 +92,13 @@ public class GameManager : MonoBehaviour
 
     private void HandleDeath(){
         MusicManager.Instance.ChangeToGameOver();
-        SoundManager.Instance.playSound(10);
         Time.timeScale = 0f;
     }
 
     private void HandleEnd(){
-
+        SoundManager.Instance.StopMusic();
+        MusicManager.Instance.ChangeToSine();
+        Time.timeScale = 0f;
     }
 }
 

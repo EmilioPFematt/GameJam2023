@@ -38,8 +38,10 @@ public class EnemyDamage : MonoBehaviour
     }
     void Update()
     {
-        if(hitPoints == 0){
+        if(hitPoints == 0 && !gameObject.CompareTag("Boss")){
             Destroy(this.gameObject);
+        } else if(hitPoints == 0 && gameObject.CompareTag("Boss") ){
+            GameManager.Instance.UpdateGameState(GameState.End);
         }
     }
 }
