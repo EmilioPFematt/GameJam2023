@@ -34,4 +34,7 @@ public class MusicManager : MonoBehaviour
         audioSource.clip = gameOverMusic; 
         audioSource.Play(); 
     }
+    public void StopMusic(){
+        audioSource.Stop();
+    }
 }

@@ -11,6 +11,8 @@ public class ErrorMessageScript : MonoBehaviour
     Camera camera;
     void Awake(){
         camera = Camera.main;
+        MusicManager.Instance.StopMusic();
+        SoundManager.Instance.playSound(12);
     }
     void OnTriggerEnter2D(Collider2D other){
         if(other.gameObject.CompareTag("Bullet")){
