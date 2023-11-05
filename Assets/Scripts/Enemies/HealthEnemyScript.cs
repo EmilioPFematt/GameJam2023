@@ -13,6 +13,7 @@ public class HealthEnemyScript : MonoBehaviour
     private float angle = 0.5f;
     public bool active = false;
     public float dist;
+    private Animator animator;
 
     IEnumerator IdleBehavior(){
         while(true){
@@ -38,6 +39,9 @@ public class HealthEnemyScript : MonoBehaviour
     void Start()
     {
         player = GameObject.FindWithTag("Player");
+         if(GetComponent<Animator>() != null){
+            animator = GetComponent<Animator>();
+        }
     }
     // Angle esta en PI radians
     public Vector3 FindPosition(float a, float distance){
@@ -56,7 +60,7 @@ public class HealthEnemyScript : MonoBehaviour
     void Update()
     {
         if(active){
-
+            animator.SetBool("turnEvil", true);
             Vector3 target = FindPosition(angle, dist);
             target.z = transform.position.z;
             if(Vector3.Distance(transform.position, target) <= 0.1f || localSpeed >= maxSpeed){
