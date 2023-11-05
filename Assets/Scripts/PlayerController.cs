@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Net.NetworkInformation;
 using Unity.VisualScripting;
+using UnityEditor.Animations;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -15,10 +16,12 @@ public class PlayerController : MonoBehaviour
     public float jumpSpeed; 
     public float frictionMult;
     private SpriteRenderer render;
+    private Animator animator; 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         render = GetComponent<SpriteRenderer>();
+        animator = GetComponent<Animator>(); 
     }
     public float getSpeed() {
         return localVelocity;
@@ -63,7 +66,12 @@ public class PlayerController : MonoBehaviour
             localVelocity = (Math.Abs(localVelocity) - playerAccel * frictionMult * Time.deltaTime) * Math.Sign(localVelocity); 
             if(Math.Abs(localVelocity) < 0.05f) localVelocity = 0;
         }
-        
+        if(horizontalInput != 0) {
+            animator.SetBool("IsRunning", true);
+        }
+        else if(animator.GetBool("IsRunning")){
+            animator.SetBool("IsRunning", false);
+        }
         transform.position = new Vector3(transform.position.x + localVelocity * Time.deltaTime, transform.position.y, transform.position.z);
     }   
 }
