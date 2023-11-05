@@ -46,14 +46,15 @@ public class PlayerDamage : MonoBehaviour
     void Update()
     {
         if(hitPoints == 0){
-            StartCoroutine(Death());
+            Death();
         }
     }
-    IEnumerator Death(){
+    public void Death(){
         //this.enabled = false;
-        MusicManager.Instance.ChangeToGameOver();
-        yield return new WaitForSeconds(3f);
-        Scene currentScene = SceneManager.GetActiveScene();
-        SceneManager.LoadScene(currentScene.name);
+        GameManager.Instance.UpdateGameState(GameState.Death);
+        // MusicManager.Instance.ChangeToGameOver();
+        // yield return new WaitForSeconds(3f);
+        // Scene currentScene = SceneManager.GetActiveScene();
+        // SceneManager.LoadScene(currentScene.name);
     }
 }

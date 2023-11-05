@@ -25,6 +25,15 @@ public class GameManager : MonoBehaviour
         Cursor.SetCursor(cursorTexture, hotSpot, cursorMode);   
     }
 
+    void Update(){
+        if(State == GameState.End){
+            if (Input.anyKeyDown)
+            {
+                Application.Quit();
+            }
+        }
+    }
+
     // Update is called once per frame
     public void UpdateGameState(GameState newState)
     {
@@ -81,7 +90,9 @@ public class GameManager : MonoBehaviour
     }
 
     private void HandleDeath(){
-
+        MusicManager.Instance.ChangeToGameOver();
+        SoundManager.Instance.playSound(10);
+        Time.timeScale = 0f;
     }
 
     private void HandleEnd(){
