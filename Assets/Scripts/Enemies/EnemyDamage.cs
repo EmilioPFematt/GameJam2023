@@ -27,13 +27,21 @@ public class EnemyDamage : MonoBehaviour
             hitPoints--;
             StartCoroutine(FlashRoutine());
             StartCoroutine(Count());
-            var health = GetComponent<HealthEnemyScript>();
+            var health = gameObject.GetComponent<HealthEnemyScript>();
+            Debug.Log(health);
             if(health != null){
                 health.SetWakeUp(true);
             }
-            var sleeping = GetComponent<SleepingEnemyScript>();
+            var sleeping = gameObject.GetComponent<SleepingEnemyScript>();
+            Debug.Log(sleeping);
             if(sleeping != null && !GetComponent<SleepingEnemyScript>().awake){
                 StartCoroutine(sleeping.WakeUp());
+            }
+            var swoopingEnemy = gameObject.GetComponent<SwoopingEnemyScript>();
+            Debug.Log(swoopingEnemy);
+            if(swoopingEnemy != null && !GetComponent<SwoopingEnemyScript>().awake){
+                Debug.Log(swoopingEnemy.awake);
+                swoopingEnemy.awake = true;
             }
         } 
     }
