@@ -12,11 +12,12 @@ public class HealthEnemyScript : MonoBehaviour
     private GameObject player;
     private float angle = 0.5f;
     public bool active = false;
+    public float dist;
 
     IEnumerator IdleBehavior(){
         while(true){
             bool attack = UnityEngine.Random.Range(0.0f, 1.0f) > 0.3f;
-            float newAngle = attack?angle+1:UnityEngine.Random.Range(0.0f, 1.0f);
+            float newAngle = UnityEngine.Random.Range(0.0f, 1.0f);
             yield return new WaitForSeconds(UnityEngine.Random.Range(0.5f, 3.0f));
             setMaxSpeed(attack?attackSpeed:normalSpeed);
             setTarget(newAngle);
@@ -55,7 +56,9 @@ public class HealthEnemyScript : MonoBehaviour
     void Update()
     {
         if(active){
-            Vector3 target = FindPosition(angle, 6.0f);
+
+            Vector3 target = FindPosition(angle, dist);
+            target.z = transform.position.z;
             if(Vector3.Distance(transform.position, target) <= 0.1f || localSpeed >= maxSpeed){
                 localSpeed -= acceleration * Time.deltaTime;
                 if(localSpeed < 0) localSpeed = 0; 
@@ -65,6 +68,8 @@ public class HealthEnemyScript : MonoBehaviour
                 if(localSpeed > maxSpeed) localSpeed = maxSpeed;
             }
             transform.position = Vector3.MoveTowards(transform.position, target, localSpeed * Time.deltaTime);
+            
         }
     }
+
 }

@@ -25,7 +25,7 @@ public class HandBehaviour : MonoBehaviour
 
         Direction.Normalize();  
 
-        Debug.Log(Direction);
+        //Debug.Log(Direction);
 
         if(Direction.x > 0) {
             render.flipX = true;

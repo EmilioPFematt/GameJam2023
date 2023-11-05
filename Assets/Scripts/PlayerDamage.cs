@@ -10,6 +10,7 @@ public class PlayerDamage : MonoBehaviour
     public int hitPoints = 5;
     private bool canBeHit = true; 
     void OnTriggerStay2D(Collider2D other){
+        Debug.Log(other.name);
         if(other.gameObject.CompareTag("Enemy") && canBeHit){
             var sleeping = other.GetComponent<SleepingEnemyScript>();
             var health = other.GetComponent<HealthEnemyScript>();  
