@@ -8,6 +8,7 @@ TagManager:
   - Enemy
   - sfx
   - music
+  - trigger
   layers:
   - Default
   - TransparentFX
