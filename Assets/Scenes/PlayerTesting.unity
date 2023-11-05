@@ -8587,6 +8587,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: WashingMachine
       objectReference: {fileID: 0}
+    - target: {fileID: 3043340983604527705, guid: c318363e9a99d914897334f566456d6c, type: 3}
+      propertyPath: hitPoints
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 6350952977072252913, guid: c318363e9a99d914897334f566456d6c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 10.57
@@ -8645,7 +8649,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6850745290151917158, guid: c318363e9a99d914897334f566456d6c, type: 3}
       propertyPath: m_SortingOrder
-      value: -1
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -8808,7 +8812,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   flashMaterial: {fileID: 2100000, guid: 5c65a609232af8f4da0f1b604fe927cf, type: 2}
-  hitPoints: 2
+  hitPoints: 3
 --- !u!114 &8813833688014032843
 MonoBehaviour:
   m_ObjectHideFlags: 0

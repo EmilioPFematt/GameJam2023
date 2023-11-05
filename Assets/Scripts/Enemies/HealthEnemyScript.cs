@@ -19,7 +19,7 @@ public class HealthEnemyScript : MonoBehaviour
         while(true){
             bool attack = UnityEngine.Random.Range(0.0f, 1.0f) > 0.3f;
             float newAngle = UnityEngine.Random.Range(0.0f, 1.0f);
-            yield return new WaitForSeconds(UnityEngine.Random.Range(0.5f, 3.0f));
+            yield return new WaitForSeconds(UnityEngine.Random.Range(0.5f, 2.0f));
             setMaxSpeed(attack?attackSpeed:normalSpeed);
             setTarget(newAngle);
         }

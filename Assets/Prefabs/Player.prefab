@@ -355,6 +355,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeSinceLastFire: 0.1
-  fireRate: 5
+  fireRate: 3
   bulletSpeed: 10
   bullet: {fileID: 2720845623099370233, guid: 14c790cb86c999f4fb1f82ce148d3133, type: 3}
