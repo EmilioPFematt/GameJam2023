@@ -38,6 +38,7 @@ public class MenuManager : MonoBehaviour
     }
 
     public void StartGame(){
+        SoundManager.Instance.playSound(7);
         GameManager.Instance.UpdateGameState(GameState.Game);
     }
 

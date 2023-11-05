@@ -9,10 +9,7 @@ public class PlayerDamage : MonoBehaviour
     // Start is called before the first frame update
     public int hitPoints = 5;
     private bool canBeHit = true; 
-    private SoundManager soundManager;
-    void Start(){
-        soundManager = GameObject.FindGameObjectWithTag("sfx").GetComponent<SoundManager>();
-    }
+    
     void OnTriggerStay2D(Collider2D other){
         Debug.Log(other.name);
         if(other.gameObject.CompareTag("Enemy") && canBeHit){
@@ -27,7 +24,7 @@ public class PlayerDamage : MonoBehaviour
             }
             if(damage){ 
                 hitPoints --;
-                soundManager.playSound(2);
+                SoundManager.Instance.playSound(2);
                 StartCoroutine(Count());
             }
         } 
